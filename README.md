@@ -104,7 +104,7 @@ Based on the observations from these activities, I recommend the following secur
 
 - **Review HTTP response headers:** Periodically review response headers for unnecessary technical information. Confirm that publicly accessible endpoints expose only intended information and do not reveal sensitive data.
 
-- **Review DNS security configuration:** The organisation should work with its hosting provider to ensure DNS software is supported and regularly patched. DNSSEC can be considered to strengthen DNS response integrity. The SPF record should also be reviewed with the email administrator to ensure all legitimate sending services are authorised before making any policy changes.
+- **Review DNS security configuration:** The organization should work with its hosting provider to ensure DNS software is supported and regularly patched. DNSSEC can be considered to strengthen DNS response integrity. The SPF record should also be reviewed with the email administrator to ensure all legitimate sending services are authorised before making any policy changes.
 
 - **Protect public contact email accounts:** Ensure public-facing email accounts have appropriate access controls, multi-factor authentication, spam filtering and phishing protection.
 

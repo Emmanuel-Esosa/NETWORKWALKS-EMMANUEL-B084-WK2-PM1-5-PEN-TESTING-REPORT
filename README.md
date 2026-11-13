@@ -64,7 +64,7 @@ Finally, I used **dnsrecon** to enumerate DNS records. It showed HostGator name 
 
 For the second activity, I used **Zenmap** (Nmap 7.99) on my Kali Linux virtual machine to perform network discovery on my own lab network. The practical required me to identify my local IP address and subnet, discover live hosts, record their IP and MAC addresses, and generate a network topology.
 
-I first ran `ip a` to identify my local IP address and subnet. The lab interface (eth0) has the address **10.0.0.2/24**, so the subnet is **10.0.0.0/24**. The second interface (eth1) is the VirtualBox NAT adapter that provides internet access, so I did not scan it. I then started Zenmap with `sudo zenmap`, entered the subnet and selected the **Ping scan** profile, which runs `nmap -sn 10.0.0.0/24`. The scan checked 256 addresses and found **three live hosts**:
+I first ran `ip a` to identify my local IP address and subnet. The lab interface (eth0) has the address **10.0.0.2/24**, so the subnet is **10.0.0.0/24**. The second interface (eth1) connects to my separate cybersecurity class lab network, which I use for other practice machines, so I did not scan it and my internship lab network stays untouched. I then started Zenmap with `sudo zenmap`, entered the subnet and selected the **Ping scan** profile, which runs `nmap -sn 10.0.0.0/24`. The scan checked 256 addresses and found **three live hosts**:
 
 | IP address | MAC address | Notes |
 | --- | --- | --- |
@@ -134,12 +134,15 @@ Screenshots are stored in [`screenshots/`](screenshots/) and the raw tool output
 <img width="1389" height="795" alt="1  whois A" src="https://github.com/user-attachments/assets/a74fbf98-76b4-4081-abff-0ad5cc78dafd" />
 
 
-Raw output: [1_whois.txt](outputs_files/1_whois.txt)
+Raw output: [1_whois.txt](outputs_files/1_whois.txt) 
+
+
 
 #### whatweb
 
-<img width="1422" height="357" alt="2  whatweb" src="https://github.com/user-attachments/assets/ebf06467-5454-4d4e-b0c7-d5adb3ca09a8" />
+<img width="1433" height="492" alt="what web new" src="https://github.com/user-attachments/assets/cfed1517-c1d9-4c5a-9a6a-18cff32703ed" />
 
+**Note**: I typed an extra space in the save path, so the terminal printed “Is a directory” for the tee part. The command still ran and displayed its full output. I then moved 1_whois.txt and 2_whatweb.txt into the footprinting folder with mv, and ls confirms both files are there.
 
 Raw output: [2_whatweb.txt](outputs_files/2_whatweb.txt)
 

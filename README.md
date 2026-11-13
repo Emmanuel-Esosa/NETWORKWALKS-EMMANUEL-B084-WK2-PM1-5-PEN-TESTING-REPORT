@@ -70,7 +70,7 @@ I first ran `ip a` to identify my local IP address and subnet. The lab interface
 | 10.0.0.2 | 08:00:27:cf:ed:39 | My own Kali machine. The MAC was taken from `ip a`, because a host does not show its own MAC in a scan |
 | 10.0.0.3 | 52:54:00:12:35:00 | QEMU virtual NIC, responds to ping |
 
-I repeated the scan from the terminal to save a text copy, and the result was the same. Two of the hosts, 10.0.0.1 and 10.0.0.3, report the same MAC address. After pinging 10.0.0.3 (3 of 3 replies), `ip neigh` showed the same MAC again. Two separate machines should not share a MAC address, so the virtual network device is probably answering for both. I recorded this as an observation and did not draw a firm conclusion.
+I repeated the scan from the terminal to save a text copy, and the result was the same. Two of the hosts, 10.0.0.1 and 10.0.0.3, report the same MAC address. After pinging 10.0.0.3 (3 of 3 replies), `ip neigh` showed the same MAC again. Two separate machines should not share a MAC address, so I suspected it was related to the virtual network configuration. I recorded this as an observation and did not draw a firm conclusion.
 
 After the scan, I opened the **Topology** tab in Zenmap, enabled the legend and saved the network topology as a PDF, as required by the practical. The graph shows localhost at the centre with the three hosts around it, all in green because a ping scan does not check ports. A ping scan only shows which hosts respond. It does not check ports, services or operating systems.
 
@@ -80,11 +80,11 @@ Based on the information collected during the footprinting and network scanning 
 
 | # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
 | --- | --- | --- | --- | --- |
-| 1 | Web technology and version information exposed | WhatWeb identified WordPress 7.1.4 and WP Download Manager 3.3.76 | Attackers may use exposed version information to find software that needs further security review | **Medium** |
+| 1 | Web technology and version information exposed | WhatWeb identified WordPress 7.1.4 and WP Download Manager 3.3.76 | Attackers may use exposed version information to find software that needs further security review | **Low** |
 | 2 | Server IP address identifiable | nslookup resolved the domain to 192.232.216.135, also used by the mail server | Shows the network location of the web and mail services | **Low** |
 | 3 | HTTP technical information exposed | curl -I showed caching headers, a plugin name in X-Redirect-By, and /wp-json/ in the Link header | May assist technology fingerprinting and further enumeration | **Low** |
 | 4 | WAF technology identifiable | wafw00f identified ModSecurity (SpiderLabs) | Reveals information about the web application's security architecture | **Low** |
-| 5 | DNS software version and infrastructure exposed | dnsrecon showed BIND 9.16.23-RH on the name servers, DNSSEC not signed, and an SPF soft fail (~all) | The version helps an attacker look up known issues. The name servers belong to the hosting provider | **Medium** |
+| 5 | DNS software version and infrastructure exposed | dnsrecon showed BIND 9.16.23-RH on the name servers, DNSSEC not signed, and an SPF soft fail (~all) | The version helps an attacker look up known issues. The name servers belong to the hosting provider | **Low** |
 | 6 | Public contact email exposed | whatweb showed info@networkwalks.com | Can be used for phishing or social engineering | **Low** |
 | 7 | Multiple live hosts visible on local network | Zenmap found 3 live hosts, and two of them share one MAC address | Unknown devices, or a virtual device answering for several addresses, should be checked | **Low** |
 
@@ -100,16 +100,24 @@ Therefore, the presence of information such as a software version, IP address or
 
 Based on the observations from these activities, I recommend the following security improvements:
 
-- **Review publicly exposed technology information.** Organizations should regularly review what information about their web technologies, CMS and plugins is publicly visible.
-- **Keep software updated.** WordPress, plugins and other web technologies should be updated regularly and reviewed against current security advisories.
-- **Review HTTP headers.** Response headers should be checked for unnecessary technical information, such as plugin names and the /wp-json/ link.
-- **Review DNS records and software.** Records should be checked periodically so that only required information is public. The BIND version is shown by the hosting provider's name servers, so the owner should ask the provider to hide it. DNSSEC and a stricter SPF policy are worth considering.
-- **Use a role address for public contact.** A shared role address is better than a single public email address.
-- **Properly configure and monitor the WAF.** Keep the WAF (ModSecurity) enabled and tuned, since it already filters naive attacks.
-- **Perform regular internal network discovery.** Organizations should periodically scan their own networks to identify active devices.
-- **Investigate unknown devices.** Any unexpected device found during scanning should be verified, including cases like the shared MAC address seen here.
-- **Maintain network documentation.** Network topology and device information should be documented and updated regularly.
-- **Perform security testing with authorization.** Reconnaissance and scanning should only be performed against systems and networks where appropriate authorization has been provided.
+- **Manage technology exposure and software updates:** Regularly review publicly exposed information about web technologies, CMS platforms and plugins. Prioritise keeping software updated, supported and checked against relevant security advisories. Reducing unnecessary version disclosure can provide an additional layer of information control but should not replace patch management.
+
+- **Review HTTP response headers:** Periodically review response headers for unnecessary technical information. Confirm that publicly accessible endpoints expose only intended information and do not reveal sensitive data.
+
+- **Review DNS security configuration:** The organisation should work with its hosting provider to ensure DNS software is supported and regularly patched. DNSSEC can be considered to strengthen DNS response integrity. The SPF record should also be reviewed with the email administrator to ensure all legitimate sending services are authorised before making any policy changes.
+
+- **Protect public contact email accounts:** Ensure public-facing email accounts have appropriate access controls, multi-factor authentication, spam filtering and phishing protection.
+
+- **Maintain and monitor the WAF:** Ensure the Web Application Firewall is properly configured, regularly updated and monitored. Periodically review its rules and logs to identify suspicious activity.
+
+- **Perform regular internal network discovery:** Organizations should periodically scan their own networks to identify active devices.
+
+- **Investigate unknown devices:** Any unexpected device found during scanning should be verified, including cases like the shared MAC address seen here.
+
+- **Maintain network documentation:** Network topology and device information should be documented and updated regularly.
+
+- **Perform security testing with authorization:** Reconnaissance and scanning should only be performed against systems and networks where appropriate authorization has been provided.
+
 
 ## 7. Conclusion
 

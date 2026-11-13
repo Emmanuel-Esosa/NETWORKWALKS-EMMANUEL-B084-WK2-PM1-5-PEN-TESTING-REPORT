@@ -80,7 +80,7 @@ Based on the information collected during the footprinting and network scanning 
 
 | # | Risk / Finding | Evidence / Observation | Potential Impact | Risk Level |
 | --- | --- | --- | --- | --- |
-| 1 | Web technology and version information exposed | WhatWeb identified WordPress 7.1.4 and WP Download Manager 3.3.76 | Attackers may use exposed version information to find software that needs further security review | **Low** |
+| 1 | Web technology and version information exposed | WhatWeb identified WordPress 7.1.4 and WP Download Manager 3.3.76 | May help attackers identify software versions and potential vulnerabilities | **Low** |
 | 2 | Server IP address identifiable | nslookup resolved the domain to 192.232.216.135, also used by the mail server | Shows the network location of the web and mail services | **Low** |
 | 3 | HTTP technical information exposed | curl -I showed caching headers, a plugin name in X-Redirect-By, and /wp-json/ in the Link header | May assist technology fingerprinting and further enumeration | **Low** |
 | 4 | WAF technology identifiable | wafw00f identified ModSecurity (SpiderLabs) | Reveals information about the web application's security architecture | **Low** |

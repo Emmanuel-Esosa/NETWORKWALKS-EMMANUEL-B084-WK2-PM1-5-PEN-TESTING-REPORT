@@ -125,8 +125,6 @@ I also learned that technical findings should be documented clearly. A good cybe
 
 ## 8. Evidences Collected
 
-Screenshots are stored in [`screenshots/`](screenshots/) and the raw tool output in [`outputs_files/`](outputs_files/).
-
 #### whois
 
 <img width="1389" height="795" alt="1  whois A" src="https://github.com/user-attachments/assets/a74fbf98-76b4-4081-abff-0ad5cc78dafd" />

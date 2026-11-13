@@ -214,12 +214,12 @@ Raw output: [zenmap-ping-scan.txt](outputs_files/zenmap-ping-scan.txt) and [zenm
 
 Topology PDF: [zenmap-topology.pdf](outputs_files/zenmap-topology.pdf)
 
-**Author**
+#### Author ####
 
 **Emmanuel-Osagie Esosa Ifeoluwa**
 LinkedIn: [https://www.linkedin.com/in/esosa-ifeoluwa-emmanuel-4b2364349](https://www.linkedin.com/in/esosa-ifeoluwa-emmanuel-4b2364349)
 
-**Project Information**
+#### Project Information ####
 
 **Program Name:** Cybersecurity program at Networkwalks | **Week:** 02 | **Repository:** Github
 

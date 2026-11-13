@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?><nmaprun args="nmap -sn 10.0.0.0/24" profile_name="Ping scan" scanner="nmap" start="1794428330" startstr="Wed Nov 11 21:18:50 2026" version="7.99" xmloutputversion="1.04"><verbose level="0"></verbose><debugging level="0"></debugging><output type="interactive">Starting Nmap 7.99 ( https://nmap.org ) at 2026-11-11 21:18 +0100
+Nmap scan report for 10.0.0.1
+Host is up (0.0056s latency).
+MAC Address: 52:54:00:12:35:00 (QEMU virtual NIC)
+Nmap scan report for 10.0.0.3
+Host is up (0.0038s latency).
+MAC Address: 52:54:00:12:35:00 (QEMU virtual NIC)
+Nmap scan report for 10.0.0.2
+Host is up.
+Nmap done: 256 IP addresses (3 hosts up) scanned in 4.10 seconds
+</output><host comment=""><status state="up"></status><address addr="10.0.0.1" vendor="" addrtype="ipv4"></address><address addr="52:54:00:12:35:00" vendor="QEMU virtual NIC" addrtype="mac"></address><hostnames></hostnames><ports></ports><os></os><uptime seconds="" lastboot=""></uptime><tcpsequence index="" difficulty="" values=""></tcpsequence><ipidsequence class="" values=""></ipidsequence><tcptssequence class="" values=""></tcptssequence></host><host comment=""><status state="up"></status><address addr="10.0.0.3" vendor="" addrtype="ipv4"></address><address addr="52:54:00:12:35:00" vendor="QEMU virtual NIC" addrtype="mac"></address><hostnames></hostnames><ports></ports><os></os><uptime seconds="" lastboot=""></uptime><tcpsequence index="" difficulty="" values=""></tcpsequence><ipidsequence class="" values=""></ipidsequence><tcptssequence class="" values=""></tcptssequence></host><host comment=""><status state="up"></status><address addr="10.0.0.2" vendor="" addrtype="ipv4"></address><hostnames></hostnames><ports></ports><os></os><uptime seconds="" lastboot=""></uptime><tcpsequence index="" difficulty="" values=""></tcpsequence><ipidsequence class="" values=""></ipidsequence><tcptssequence class="" values=""></tcptssequence></host><runstats><finished time="1794428334" timestr="Wed Nov 11 21:18:54 2026"></finished><hosts up="3" down="253" total="256"></hosts></runstats></nmaprun>

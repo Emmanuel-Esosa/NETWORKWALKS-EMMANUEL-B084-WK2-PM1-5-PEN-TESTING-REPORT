@@ -1,0 +1,10 @@
+# Nmap 7.99 scan initiated Thu Nov 12 03:22:27 2026 as: /usr/lib/nmap/nmap -sn -oN /home/esosa/zenmap-ping-scan.txt 10.0.0.0/24
+Nmap scan report for 10.0.0.1
+Host is up (0.00088s latency).
+MAC Address: 52:54:00:12:35:00 (QEMU virtual NIC)
+Nmap scan report for 10.0.0.3
+Host is up (0.00091s latency).
+MAC Address: 52:54:00:12:35:00 (QEMU virtual NIC)
+Nmap scan report for 10.0.0.2
+Host is up.
+# Nmap done at Thu Nov 12 03:22:39 2026 -- 256 IP addresses (3 hosts up) scanned in 11.13 seconds
